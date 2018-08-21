@@ -50,6 +50,4 @@ Suggestions and ideas are more than welcome. We suggest including them in issues
 Localization guidelines are described in the according [wiki page](https://github.com/eellak/gsoc2018-librecust/wiki/Localization) and especially at the [Guide paragraph](https://github.com/eellak/gsoc2018-librecust/wiki/Localization#how-to-localize-librecust-extensions)
 
 ## Team 
-* Developer: Arvanitis Christos ([arvchristos](https://github.com/arvchrihttps://github.com/eellak/gsoc2018-librecust/wiki/Localization#how-to-localize-librecust-extensionsstos))
-* Mentors: Kostas Papadimas, Theodoros Karounos
-* Organization: GFOSS 
+* Developer: Arvanitis Christos ([@arvchristos](https://github.com/arvchristos))
