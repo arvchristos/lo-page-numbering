@@ -43,6 +43,12 @@ In order to avoid unexpected results you are suggested to avoid installing toget
 ## Contribute 
 Extensive info about the development of this extension is provided in the repository [wiki](https://github.com/eellak/gsoc2018-librecust/wiki). 
 
+## Discussion
+
+Discussion about the extension as well as suggestions can be issued either on the repo or at the following IRC channel:
+
+https://riot.im/app/#/room/!pywEKwnnGVkNrbMljv:matrix.org
+
 ### Suggestions 
 Suggestions and ideas are more than welcome. We suggest including them in issues, however personal emails are not discouraged.
 
