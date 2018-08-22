@@ -11,13 +11,13 @@
                   <value>com.sun.star.text.TextDocument</value>
                </prop>
                <prop oor:name="MergePoint" oor:type="xs:string">
-                  <value>.uno:InsertMenu\.uno:InsertBreak</value>
+                  <value>.uno:InsertMenu\.uno:InsertPagebreak</value>
                </prop>
                <prop oor:name="MergeCommand" oor:type="xs:string">
                   <value>AddAfter</value>
                </prop>
                <prop oor:name="MergeFallback" oor:type="xs:string">
-                  <value>Ignore</value>
+                  <value>AddFirst</value>
                </prop>
                <node oor:name="MenuItems">
                   <node oor:name="N002" oor:op="replace">
