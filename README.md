@@ -1,7 +1,5 @@
 # Page Numbering Addon
 
-During this project, we decided, after getting feedback from common users (law department employees), to implement a plugin that eases the process of adding page numbering to a document.
-
 This plugin, or by LO/OO terminology add-on(an extension that includes any kind of UI implementation/customization), includes the following features:
 
 ## Features
@@ -20,13 +18,12 @@ Page Numbering Addon can be found either in this repository or at the following 
 2. [Apache OpenOffice Extensions](https://extensions.openoffice.org/en/project/page-numbering-addon)
 
 ## Implementation
-In order to get familiar with LO API we first implemented a version of the plugin in LO Basic language. Although this is the most documented among LO/OO compatible languages, it follows an archaic programming principle with little to none moder features. That is the reason that led us to port the official version in Python, using [UNO:API](https://api.libreoffice.org/) as the connection with LibreOffice.
+In order to get familiar with LO API a version of the plugin in LO Basic language was implemented. Although this is the most documented among LO/OO compatible languages, it follows an archaic programming approach with little to none modern features. That is the reason that led to the Python port for the official version of the extension.
 
-During the porting process, we still tested all of our next steps in the Basic module for faster communication with LO, exploiting the abstraction of Basic over Python.
+Page Numbering Addon 0.0.1 was part of the [librecust](https://github.com/eellak/gsoc2018-librecust) GSOC project, suggested by [GFOSS Open Technologies Alliance](https://gfoss.eu/home-posts/). 
+Source code will, surely, be available and suggestions, improvements or bug reports will be more than welcome. Any updates will be distributed through the official extension manager.
 
-All facts and drawbacks that we came through during this implementation are documented in the Wiki, as well as the whole process of building the workflow used for a common Python add-on implementation.
-
-Page Numbering Addon will be released in version 0.0.1 during/after GSOC period. Source code will, surely, be available and suggestions, improvements or bug reports will be more than welcome. Any updates will be distributed through the official extension manager.
+Future versions will be distributed from the official LO extension site as well as from this repository. 
 
 ## Installation
 Each implementation (Python/LO Basic) is packaged as an extension in `.oxt` format. The LO Basic version has no dependencies. For the suggested Python version the following are applied:
@@ -41,19 +38,21 @@ Each implementation (Python/LO Basic) is packaged as an extension in `.oxt` form
 In order to avoid unexpected results you are suggested to avoid installing together the two versions of this add-on.
 
 ## Contribute 
-Extensive info about the development of this extension is provided in the repository [wiki](https://github.com/eellak/gsoc2018-librecust/wiki). 
+Extensive info about the development of this extension is provided in the repository [wiki](https://gitlab.com/lo_extensions/lo-page-numbering/wikis/home). 
 
 ## Discussion
 
 Discussion about the extension as well as suggestions can be issued either on the repo or at the following IRC channel:
 
-https://riot.im/app/#/room/!pywEKwnnGVkNrbMljv:matrix.org
+[IRC channel](https://riot.im/app/#/room/!pywEKwnnGVkNrbMljv:matrix.org)
 
 ### Suggestions 
 Suggestions and ideas are more than welcome. We suggest including them in issues, however personal emails are not discouraged.
 
 ### Localization 
-Localization guidelines are described in the according [wiki page](https://github.com/eellak/gsoc2018-librecust/wiki/Localization) and especially at the [Guide paragraph](https://github.com/eellak/gsoc2018-librecust/wiki/Localization#how-to-localize-librecust-extensions)
+Localization guidelines are described in the corresponding [wiki page](https://gitlab.com/lo_extensions/lo-page-numbering/wikis/Localization-tutorial)
+
+However, a localization tool for LO extensions is developed and can be found on the corresponding [repository](https://gitlab.com/lo_extensions/l10n-utility).
 
 ## Team 
 * Developer: Arvanitis Christos ([@arvchristos](https://github.com/arvchristos))
