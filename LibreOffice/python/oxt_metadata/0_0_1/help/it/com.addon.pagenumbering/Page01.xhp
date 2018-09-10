@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+   <meta>
+      <topic id="com.addon.pagenumbering.Page01">
+         <title id="tit" xml-lang="it">Estensione Page Numbering: Introduzione</title>
+         <filename>/com.addon.pagenumbering/Page01.xhp</filename>
+      </topic>
+   </meta>
+   <body>
+      <paragraph role="heading" level="1" xml-lang="it" id="N0001">
+         Estensione Page Numbering
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="it" id="N0002">
+         La numerazione delle pagine in LibreOffice/OpenOffice è una procedura incomprensibilmente complicata, specialmente per un nuovo utente. È necessario conoscere dove vengono immagazzinate le informazioni riguardanti la numerazione delle pagine in ciascun documento, come usare l'interruzione manuale delle pagine e fino a dove estendono le loro funzioni gli stili di pagina. In considerazione del fatto che altri programmi per ufficio (office suites) seguono un approccio ben più semplice, si è deciso di creare l'estensione <emph>Page Numbering</emph>. In questa Guida si spiegherà come questa estensione aggiunga un livello di astrazione all'intero processo di numerazione delle pagine.
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="it" id="N0003">
+         
+      </paragraph>
+      <paragraph role="heading" level="2" xml-lang="it" id="N0004">
+         Introduzione
+      </paragraph>
+      <section id="Menu item" >
+         <paragraph role="paragraph" xml-lang="it" id="N0005">
+            L'estensione è accessibile dal menu <emph>Inserisci-&gt;Numerazione pagine</emph> 
+         </paragraph>
+      </section>
+      <paragraph role="paragraph" xml-lang="it" id="N0006">
+         Una volta avuto accesso alla relativa voce di menu, all'utente viene presentata questa finestra di dialogo:<br/><image src="com.addon.pagenumbering/../../../images/help/it/main_page_numbering.png" id="N0007"><alt xml-lang="it" id="N0008">Finestra di dialogo principale</alt></image>
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="it" id="N0009">
+         
+      </paragraph>
+      <list type="unordered">
+         <listitem>
+            <paragraph role="listitem" xml-lang="it" id="N0010">
+               <emph>Ornamento</emph>: Permette di scegliere se avere una numerazione semplice o circondata da testo (per es.: -1-, [1]).
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="it" id="N0011">
+               <emph>Formato numerazione</emph>: Permette di scegliere fra diversi formati di numerazione quali ad esempio i numeri romani minuscoli/maiuscoli (i,ii…, I,II…), i numeri arabi (1,2…) o le lettere greche (α,β…, Α,Β…).
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="it" id="N0012">
+               <emph>Allineamento</emph>: Definisce it tipo di allineamento della numerazione.
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="it" id="N0013">
+               <emph>Posizione</emph>: Permette di scegliere la posizione in cui inserire la numerazione (le opzioni attualmente disponibili sono: Riga d'intestazione e Piè di pagina).
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="it" id="N0014">
+               <emph>Nome del carattere</emph>: Permette di scegliere dall'elenco dei caratteri di sistema disponibili quello da utilizzare.
+            </paragraph>
+         </listitem>
+      </list>
+      <paragraph role="warning" xml-lang="it" id="N0015">
+         Attenzione: alcuni carattere di sistema non sono compatibili con tutte le tipologie di caratteri possibili e pertanto si può incorrere in problemi che comportano l'assenza del numero di pagina (per esempio: un tipo di carattere può non avere il supporto per i caratteri greci o cirillici).
+      </paragraph>
+      <list type="unordered">
+         <listitem>
+            <paragraph role="listitem" xml-lang="it" id="N0016">
+               <emph>Dimensione</emph>: Definisce le dimensioni del carattere.
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="it" id="N0017">
+               <emph>Prima pagina</emph>: Pagina da cui inizia la numerazione.
+            </paragraph>
+         </listitem>
+      </list>
+      <paragraph role="tip" xml-lang="it" id="N0018">
+         Un esempio di uso dell'opzione 'Prima pagina' si ha nel caso di un documento che comprenda una pagina di copertina e delle pagine contenenti l'indice generale. Tutte queste pagine normalmente non hanno una numerazione. Essa inizia successivamente.
+      </paragraph>
+      <paragraph role="tip" xml-lang="it" id="N0019">
+         Scegliendo una pagina differente dalla prima per iniziare la numerazione del documento, si creano due intervalli di pagine: il primo è privo di numerazione mentre il secondo è numerato. A seguito di ciò vengono creati dei cloni di stili di pagina che permettono il mantenimento dello stile di pagina personalizzato precedentemente creato.
+      </paragraph>
+      <list type="unordered">
+         <listitem>
+            <paragraph role="listitem" xml-lang="it" id="N0020">
+               <emph>Inizia con…</emph>: Definisce una 'correzione' (offset) del valore del numero della prima pagina numerata.
+            </paragraph>
+         </listitem>
+      </list>
+      <paragraph role="tip" xml-lang="it" id="N0021">
+         La definizione di una 'correzione' (offset) del valore del numero della prima pagina numerata simula l'alterazione delle corrispondente proprietà disponibile a livello di paragafo. Ciò consente infatti all'utente di scegliere un differente schema di numerazione all'interno dello stesso documento (per esempio: le prime 'n' pagine vengono numerate con i numeri romani maiuscoli, mentrre le restanti usano la normale numerazione con cifre arabe).
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="it" id="N0022">
+         
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="it" id="N0023">
+         
+      </paragraph>
+   </body>
+</helpdocument>
