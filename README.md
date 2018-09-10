@@ -17,6 +17,9 @@ Page Numbering Addon can be found either in this repository or at the following 
 1. [LibreOffice Official Extensions](https://extensions.libreoffice.org/extensions/page-numbering-addon).
 2. [Apache OpenOffice Extensions](https://extensions.openoffice.org/en/project/page-numbering-addon)
 
+## Acknowledgments
+People that have contributed one way or another for this project are acknowledged at the ACKNOWLEDGEMENTS.md file.
+
 ## Implementation
 In order to get familiar with LO API a version of the plugin in LO Basic language was implemented. Although this is the most documented among LO/OO compatible languages, it follows an archaic programming approach with little to none modern features. That is the reason that led to the Python port for the official version of the extension.
 
