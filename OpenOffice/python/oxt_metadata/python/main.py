@@ -1,21 +1,22 @@
-from __future__ import absolute_import
-import uno
-import unohelper
-import time
-from com.sun.star.awt import XTopWindowListener
+import gettext
 import itertools
 import operator
+import os
 import sys
+import time
+import urllib
+from urllib import request
+from urllib.parse import urlparse
+import uno
+import unohelper
+from com.sun.star.awt import XTopWindowListener
+from com.sun.star.beans import PropertyValue
 from com.sun.star.beans.PropertyAttribute import READONLY
 from com.sun.star.beans.PropertyAttribute import MAYBEVOID
 from com.sun.star.beans.PropertyAttribute import REMOVEABLE
 from com.sun.star.beans.PropertyAttribute import MAYBEDEFAULT
-from com.sun.star.beans import PropertyValue
-import gettext
-import os
-from urlparse import urlparse
-import urllib
-#from urllib import request
+
+
 _ = gettext.gettext
 
 # Dictionary for possible numbering type options
@@ -31,19 +32,15 @@ NumTypeCollection = {
     "A,B,C,...": 0
 }
 
-def xray(smgr, ctx, target):
-    mspf = smgr.createInstanceWithContext("com.sun.star.script.provider.MasterScriptProviderFactory", ctx)
-    script_provider = mspf.createScriptProvider("")
-    script = script_provider.getScript("vnd.sun.star.script:XrayTool._Main.Xray?language=Basic&location=application")
-    script.invoke((target,), (), ())
 
-def copyPropertySet(smgr,ctx,srcObj,dstObj):
-    mspf = smgr.createInstanceWithContext("com.sun.star.script.provider.MasterScriptProviderFactory", ctx)
+def copyPropertySet(smgr, ctx, srcObj, dstObj):
+    mspf = smgr.createInstanceWithContext(
+        "com.sun.star.script.provider.MasterScriptProviderFactory", ctx)
     script_provider = mspf.createScriptProvider("")
-    script = script_provider.getScript("vnd.sun.star.script:PageStyleClone.PageStyle.copyPropertySet?language=Basic&location=application")
-    script.invoke((srcObj,dstObj), (), ())
+    script = script_provider.getScript(
+        "vnd.sun.star.script:PageStyleClone.PageStyle.copyPropertySet?language=Basic&location=application")
+    script.invoke((srcObj, dstObj), (), ())
     return dstObj
-
 
 
 def main(*args):
@@ -51,14 +48,14 @@ def main(*args):
     smgr = ctx.ServiceManager
     try:
         ui_locale = gettext.translation('base',
-                                        localedir=urllib.url2pathname(
+                                        localedir=urllib.request.url2pathname(
                                             get_main_directory("com.addon.pagenumbering") +
                                             'python/locales'),
                                         languages=[getLanguage()]
                                         )
-    except Exception, e:
+    except Exception as e:
         ui_locale = gettext.translation('base',
-                                        localedir=urllib.url2pathname(
+                                        localedir=urllib.request.url2pathname(
                                             get_main_directory("com.addon.pagenumbering") +
                                             'python/locales'),
                                         languages=["en"]
@@ -67,14 +64,16 @@ def main(*args):
     ui_locale.install()
     _ = ui_locale.gettext
 
-    ''' get the doc from the scripting context which is made available to all scripts
+    '''
+    Get the doc from the scripting context which is made available to all scripts
     '''
     Doc = XSCRIPTCONTEXT.getDocument()
     UndoManager = Doc.getUndoManager()
     psm = uno.getComponentContext().ServiceManager
     dp = psm.createInstance("com.sun.star.awt.DialogProvider")
+
     dlg = dp.createDialog(
-        "vnd.sun.star.script:dialogs.PageNumberingDialog?location=application")
+        "vnd.sun.star.extension://com.addon.pagenumbering/dialogs/PageNumberingDialog.xdl")
 
     # Initialize the required fields
     oDialog1Model = dlg.Model
@@ -94,16 +93,14 @@ def main(*args):
     PositionLabel = oDialog1Model.getByName("PositionLabel")
     PositionLabel.Label = _("Position")
     PositionListBox = oDialog1Model.getByName("Position")
-
-    PositionListBox.StringItemList = tuple([_("Header"), _("Footer")])
-    
-    PositionListBox.SelectedItems = tuple([1])
+    PositionListBox.StringItemList = [_("Header"), _("Footer")]
+    PositionListBox.SelectedItems = [1]
 
     AlignmentLabel = oDialog1Model.getByName("AlignmentLabel")
     AlignmentLabel.Label = _("Alignment")
     AlignmentListBox = oDialog1Model.getByName("Alignment")
-    AlignmentListBox.StringItemList = tuple([_("Left"), _("Right"), _("Centered")])
-    AlignmentListBox.SelectedItems = tuple([2])
+    AlignmentListBox.StringItemList = [_("Left"), _("Right"), _("Centered")]
+    AlignmentListBox.SelectedItems = [2]
 
     FirstPageLabel = oDialog1Model.getByName("FirstPageLabel")
     FirstPageLabel.Label = _("First Page")
@@ -119,7 +116,7 @@ def main(*args):
     TypeLabel.Label = _("Numbering Type")
     NumberingTypeSelectListBox = oDialog1Model.getByName("NumberingTypeSelect")
 
-    NumberingTypeSelectListBox.StringItemList = tuple([
+    NumberingTypeSelectListBox.StringItemList = [
         "i,ii,iii,...",
         "I,II,III,...",
         "1,2,3,...",
@@ -129,22 +126,21 @@ def main(*args):
         "A...AA...AAA",
         "a,b,c,...",
         "A,B,C,..."
-    ])
+    ]
 
     NumberingTypeSelectListBox.Text = "1,2,3,..."
 
     DecorLabel = oDialog1Model.getByName("DecorLabel")
     DecorLabel.Label = _("Decor")
     NumberingDecorationListBox = oDialog1Model.getByName("NumberingDecoration")
-    NumberingDecorationListBox.StringItemList = tuple(["#", "-#-", "[#]", "(#)"])
+    NumberingDecorationListBox.StringItemList = ["#", "-#-", "[#]", "(#)"]
     NumberingDecorationListBox.Text = "#"
 
     # FontUsed = oDialog1Model.getByName("FontSelect")
 
 # Get the default paragraph font from Standard paragraph style
     ParaStyles = Doc.StyleFamilies.getByName("ParagraphStyles")
-
-    StdPara = ParaStyles.getByName("Standard")
+    StdPara = ParaStyles["Standard"]
     DefaultFontSearch = StdPara.CharFontName
 
     oListenerTop = oListenerTop_Class()
@@ -157,8 +153,8 @@ def main(*args):
     FontLabel = oDialog1Model.getByName("FontLabel")
     FontLabel.Label = _("Font")
     FontUsed = oDialog1Model.getByName("FontSelect")
-    FontUsed.StringItemList = tuple(ListFontsRet[0])
-    FontUsed.SelectedItems = tuple([ListFontsRet[1]])
+    FontUsed.StringItemList = ListFontsRet[0]
+    FontUsed.SelectedItems = [ListFontsRet[1]]
 
     SizeLabel = oDialog1Model.getByName("SizeLabel")
     SizeLabel.Label = _("Size")
@@ -196,15 +192,9 @@ def main(*args):
     ViewCursor.jumpToPage(FirstNumberedPage.Value)
 
     CurrentStyleName = ViewCursor.PageStyleName
-
     OldStyle = PageStyles.getByName(CurrentStyleName)
 
-    # Here we should invoke basic operation that will return the NewStyle
-    #copyUsingPropertySetInfo(OldStyle, NewStyle)
-
-    copyPropertySet(smgr,ctx,OldStyle,NewStyle)
-
-
+    copyPropertySet(smgr, ctx, OldStyle, NewStyle)
     DefNumberingStyleNum = 200
 
     oUDP = Doc.getDocumentProperties().UserDefinedProperties
@@ -222,10 +212,10 @@ def main(*args):
         oUDP.NumberingStyleIndex = 0
     else:
         oUDP.NumberingStyleIndex = oUDP.NumberingStyleIndex + 1
-    #xray(smgr,ctx,NewStyle)
-    #NewStyle.Hidden = True  # Do not polute page styles dialog
-    NewStyle.FollowStyle = "PageNumbering-Start(" + unicode(
-        FirstNumberedPage.Value) + ")-Index:" + unicode(oUDP.NumberingStyleIndex)
+
+    NewStyle.Hidden = True  # Do not polute page styles dialog
+    NewStyle.FollowStyle = "PageNumbering-Start(" + str(
+        FirstNumberedPage.Value) + ")-Index:" + str(oUDP.NumberingStyleIndex)
 
     if PageStyles.hasByName(NewStyle.FollowStyle) == False:
         PageStyles.insertByName(NewStyle.FollowStyle, NewStyle)
@@ -239,9 +229,13 @@ def main(*args):
     if PositionListBox.SelectedItems[0] == 0:
         NumberedPage.HeaderIsOn = True
         Num_Position = NumberedPage.HeaderText
+        NumberedPage.HeaderBodyDistance = 499
+        NumberedPage.HeaderHeight = 0
     else:
         NumberedPage.FooterIsOn = True
         Num_Position = NumberedPage.FooterText
+        NumberedPage.FooterBodyDistance = 499
+        NumberedPage.FooterHeight = 0
 
     # For text insertion a Text cursor is needed
     NumCursor = Num_Position.Text.createTextCursor()
@@ -291,7 +285,7 @@ def main(*args):
 
 class oListenerTop_Class(XTopWindowListener, unohelper.Base):
     """
-    Top window listener implementation (XTopWindowListener) 
+    Top window listener implementation (XTopWindowListener)
     """
 
     def __init__(self,):
@@ -329,7 +323,7 @@ class oListenerTop_Class(XTopWindowListener, unohelper.Base):
 
 def get_main_directory(module_name):
     """
-    Return a string that corresponds to the installation directory of 
+    Return a string that corresponds to the installation directory of
     the module_name string (e.g. com.addon.pagenumbering )
     """
     ctx = uno.getComponentContext()
@@ -341,7 +335,7 @@ def get_main_directory(module_name):
 
 def ListFonts(oDoc, SearchString):
     """
-    Returns a tuple (Font_list string[] , index of SearchString font (int) ). 
+    Returns a tuple (Font_list string[] , index of SearchString font (int) ).
     """
     SearchIndex = -1
     uniqueFontNames = []
@@ -356,7 +350,7 @@ def ListFonts(oDoc, SearchString):
     uniqueFontDescriptors = sorted(
         uniqueFontDescriptors, key=lambda x: x.Name, reverse=False)
 
-    for i in xrange(len(uniqueFontDescriptors)):
+    for i in range(len(uniqueFontDescriptors)):
         uniqueFontNames.append(uniqueFontDescriptors[i].Name)
         if uniqueFontDescriptors[i].Name == SearchString:
             SearchIndex = i
@@ -374,34 +368,33 @@ def copyUsingPropertySetInfo(srcObj, dstObj):
     dPInfo = dstObj.getPropertySetInfo()
     oProps = sPInfo.getProperties()
 
-    for i in xrange(len(oProps)):
+    for i in range(len(oProps)):
         oProp = oProps[i]
         try:
             if dPInfo.hasPropertyByName(oProp.Name):
-                
-                xray(smgr,ctx,oProp.Type)
                 if oProp.Type.getName() == dPInfo.getPropertyByName(oProp.Name).Type.getName():
-                    
                     oSValue = srcObj.getPropertyValue(oProp.Name)
                     if canCopyTypeWithAssignment(oSValue):
-                        if (uno.getConstantByName("com.sun.star.beans.PropertyAttribute.READONLY") and oProp.Attributes) == False:
+                        if (uno.getConstantByName(
+                                "com.sun.star.beans.PropertyAttribute.READONLY") and oProp.Attributes) == False:
                             if oProp.Name != "GridLines":
                                 dstObj.setPropertyValue(oProp.Name, oSValue)
                     elif uno.IsArray(oSValue):
                         pass
                     else:
                         oDValue = dstObj.getPropertyValue(oProp.Name)
-                        if oDValue == None or uno.IsEmpty(oDValue):
-                            if (uno.getConstantByName("com.sun.star.beans.PropertyAttribute.READONLY") and oProp.Attributes) == False:
+                        if oDValue is None or uno.IsEmpty(oDValue):
+                            if (uno.getConstantByName(
+                                    "com.sun.star.beans.PropertyAttribute.READONLY") and oProp.Attributes) == False:
                                 dstObj.setPropertyValue(oProp.Name, oSValue)
                             elif uno.HasUnoInterfaces(oSValue, "com.sun.star.beans.XPropertySet"):
-                                if oSValue.SupportsService("com.sun.star.text.Text"):
+                                if oSValue.SupportsService(
+                                        "com.sun.star.text.Text"):
                                     pass
                                 else:
                                     copyUsingPropertySetInfo(oSValue, oDValue)
-        except Exception, e:
-            xray(smgr,ctx,e.message)
-            return
+        except Exception as e:
+            continue
     return
 
 
@@ -425,11 +418,10 @@ and Andrew Pitonyak pdf "Useful Useful Macro Information For OpenOffice.org"
 '''
 
 
-
 def getLanguage():
     """
     Get current user interface language in string format. Useful for
-    UI locale checkong on l10n operations (e.g. gettext...) 
+    UI locale checkong on l10n operations (e.g. gettext...)
     """
     oProvider = "com.sun.star.configuration.ConfigurationProvider"
     oAccess = "com.sun.star.configuration.ConfigurationAccess"
@@ -455,13 +447,13 @@ def getLanguage():
 
 def get_instance(service_name):
     """
-    Get a service shortcut. 
+    Get a service shortcut.
     """
     sm = uno.getComponentContext()
     ctx = sm.getServiceManager()
     try:
         service = ctx.createInstance(service_name)
-    except:
+    except BaseException:
         service = NONE
     return service
 
