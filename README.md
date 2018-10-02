@@ -2,6 +2,8 @@
 
 This plugin, or by LO/OO terminology add-on(an extension that includes any kind of UI implementation/customization), includes the following features:
 
+![alt text](https://extensions.libreoffice.org/extensions/page-numbering-addon/@@images/screenshot/large)
+
 ## Features
 * Add page numbering without taking page-break system into account
 
