@@ -1,20 +1,20 @@
-import uno
-import unohelper
-import time
-from com.sun.star.awt import XTopWindowListener
+import gettext
 import itertools
 import operator
+import os
 import sys
+import time
+import urllib
+from urllib import request
+from urllib.parse import urlparse
+import uno
+import unohelper
+from com.sun.star.awt import XTopWindowListener
+from com.sun.star.beans import PropertyValue
 from com.sun.star.beans.PropertyAttribute import READONLY
 from com.sun.star.beans.PropertyAttribute import MAYBEVOID
 from com.sun.star.beans.PropertyAttribute import REMOVEABLE
 from com.sun.star.beans.PropertyAttribute import MAYBEDEFAULT
-from com.sun.star.beans import PropertyValue
-import gettext
-import os
-from urllib.parse import urlparse
-import urllib
-from urllib import request
 _ = gettext.gettext
 
 # Dictionary for possible numbering type options
