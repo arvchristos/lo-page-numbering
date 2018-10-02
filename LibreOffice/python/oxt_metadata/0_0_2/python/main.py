@@ -33,7 +33,8 @@ NumTypeCollection = {
 }
 
 
-def copyPropertySet(smgr, ctx, srcObj, dstObj):
+def copyPropertySet(smgr,ctx,srcObj,dstObj):
+    """ Copies property set """
     mspf = smgr.createInstanceWithContext("com.sun.star.script.provider.MasterScriptProviderFactory", ctx)
     script_provider = mspf.createScriptProvider("")
     script = script_provider.getScript(
@@ -43,8 +44,10 @@ def copyPropertySet(smgr, ctx, srcObj, dstObj):
 
 
 def main(*args):
+    """ Main function """
     ctx = uno.getComponentContext()
     smgr = ctx.ServiceManager
+
     try:
         ui_locale = gettext.translation('base',
                                         localedir=urllib.request.url2pathname(
@@ -52,6 +55,7 @@ def main(*args):
                                             'python/locales'),
                                         languages=[getLanguage()]
                                         )
+
     except Exception as e:
         ui_locale = gettext.translation('base',
                                         localedir=urllib.request.url2pathname(
@@ -63,9 +67,8 @@ def main(*args):
     ui_locale.install()
     _ = ui_locale.gettext
 
-    '''
-    Get the doc from the scripting context which is made available to all scripts
-    '''
+    ''' Get the doc from the scripting context which is made available to all scripts '''
+
     Doc = XSCRIPTCONTEXT.getDocument()
     UndoManager = Doc.getUndoManager()
     psm = uno.getComponentContext().ServiceManager
@@ -136,7 +139,7 @@ def main(*args):
 
     # FontUsed = oDialog1Model.getByName("FontSelect")
 
-# Get the default paragraph font from Standard paragraph style
+    # Get the default paragraph font from Standard paragraph style
     ParaStyles = Doc.StyleFamilies.getByName("ParagraphStyles")
     StdPara = ParaStyles["Standard"]
     DefaultFontSearch = StdPara.CharFontName
@@ -171,6 +174,7 @@ def main(*args):
 
     # when having Listbox we get only one selection
     AlignmentEnum = AlignmentListBox.SelectedItems[0]
+
     if AlignmentEnum == 2:
         # center align for paradjust to overcome BLOCK option
         AlignmentEnum = AlignmentEnum + 1
@@ -197,6 +201,7 @@ def main(*args):
 
     oUDP = Doc.getDocumentProperties().UserDefinedProperties
 
+
     if oUDP.getPropertySetInfo().hasPropertyByName("NumberingStyleIndex") == False:
         maybevoid = uno.getConstantByName(
             "com.sun.star.beans.PropertyAttribute.MAYBEVOID")
@@ -215,6 +220,7 @@ def main(*args):
     NewStyle.FollowStyle = "PageNumbering-Start(" + str(
         FirstNumberedPage.Value) + ")-Index:" + str(oUDP.NumberingStyleIndex)
 
+
     if PageStyles.hasByName(NewStyle.FollowStyle) == False:
         PageStyles.insertByName(NewStyle.FollowStyle, NewStyle)
 
@@ -224,6 +230,8 @@ def main(*args):
     FontSelected = FontUsed.SelectedItems[0]
 
     Num_Position = None
+
+
     if PositionListBox.SelectedItems[0] == 0:
         NumberedPage.HeaderIsOn = True
         Num_Position = NumberedPage.HeaderText
@@ -238,8 +246,7 @@ def main(*args):
     # For text insertion a Text cursor is needed
     NumCursor = Num_Position.Text.createTextCursor()
 
-    '''There should be included all those changing operations that should be put in undo stack
-    '''
+    '''There should be included all those changing operations that should be put in undo stack'''
     UndoManager.enterUndoContext(_("Page Numbering"))
 
     ViewCursor.jumpToPage(FirstNumberedPage.Value)
@@ -249,8 +256,7 @@ def main(*args):
     '''
     ViewCursor.PageNumberOffset = FirstNumberedIndex.Value
 
-    ''' Every numbered page will be of Standard Page style for now
-    '''
+    ''' Every numbered page will be of Standard Page style for now'''
     ViewCursor.PageDescName = NewStyle.FollowStyle
 
     NumCursor.ParaAdjust = AlignmentEnum
@@ -261,6 +267,7 @@ def main(*args):
 
     NumberingDecorationComboBoxText = oDialog1Model.getByName(
         "NumberingDecoration").Text
+
     if NumberingDecorationComboBoxText == "#":
         Num_Position.insertTextContent(NumCursor, PageNumber, False)
     elif NumberingDecorationComboBoxText == "-#-":
@@ -282,47 +289,55 @@ def main(*args):
 
 
 class oListenerTop_Class(XTopWindowListener, unohelper.Base):
-    """
-    Top window listener implementation (XTopWindowListener)
-    """
+    """ Top window listener implementation (XTopWindowListener) """
 
     def __init__(self,):
+        """ Initializes the listener """
         self.doc = None
 
     def setDocument(self, doc):
+        """ Sets the document """
         self.doc = doc
 
-# XModifyListener
+    # XModifyListener
     def windowOpened(self, oEvent):
+        """ Handles windowOpened event """
         pass
 
     def windowClosed(self, oEvent):
+        """ Handles windowClosed event """
         pass
 
     def windowClosing(self, oEvent):
+        """ Handles windowClosing event """
         pass
 
     def windowMinimized(self, oEvent):
+        """ Handles windowMinimized event """
         pass
 
     def windowNormalized(self, oEvent):
+        """ Handles windowNormalized event """
         pass
 
     def windowActivated(self, oEvent):
+        """ Handles windowActivated event """
         pass
 
     def windowDeactivated(self, oEvent):
+        """ Handles windowDeactivated event """
         pass
 
-# parent-interface XEventListener
+    # parent-interface XEventListener
     def disposing(self, oEvent):
+        """ Handles disposing event """
         pass  # normally not needed, but should be callable anyway
 
 
 def get_main_directory(module_name):
     """
-    Return a string that corresponds to the installation directory of
-    the module_name string (e.g. com.addon.pagenumbering )
+    Returns a string that corresponds to the installation directory of
+    the module_name string (e.g. com.addon.pagenumbering)
     """
     ctx = uno.getComponentContext()
     srv = ctx.getByName(
@@ -332,9 +347,7 @@ def get_main_directory(module_name):
 
 
 def ListFonts(oDoc, SearchString):
-    """
-    Returns a tuple (Font_list string[] , index of SearchString font (int) ).
-    """
+    """ Returns a tuple (Font_list string[] , index of SearchString font (int) ). """
     SearchIndex = -1
     uniqueFontNames = []
     oWindow = oDoc.getCurrentController().getFrame().getContainerWindow()
@@ -350,6 +363,7 @@ def ListFonts(oDoc, SearchString):
 
     for i in range(len(uniqueFontDescriptors)):
         uniqueFontNames.append(uniqueFontDescriptors[i].Name)
+
         if uniqueFontDescriptors[i].Name == SearchString:
             SearchIndex = i
 
@@ -357,9 +371,7 @@ def ListFonts(oDoc, SearchString):
 
 
 def copyUsingPropertySetInfo(srcObj, dstObj):
-    """
-    Cope the whole PropertySet of an UNO object to an other instance.
-    """
+    """ Copies the whole PropertySet of an UNO object to another instance."""
     ctx = uno.getComponentContext()
     smgr = ctx.ServiceManager
     sPInfo = srcObj.getPropertySetInfo()
@@ -368,33 +380,46 @@ def copyUsingPropertySetInfo(srcObj, dstObj):
 
     for i in range(len(oProps)):
         oProp = oProps[i]
+
         try:
+
             if dPInfo.hasPropertyByName(oProp.Name):
+
                 if oProp.Type.getName() == dPInfo.getPropertyByName(oProp.Name).Type.getName():
                     oSValue = srcObj.getPropertyValue(oProp.Name)
+
                     if canCopyTypeWithAssignment(oSValue):
+
                         if (uno.getConstantByName("com.sun.star.beans.PropertyAttribute.READONLY") and oProp.Attributes) == False:
+
                             if oProp.Name != "GridLines":
                                 dstObj.setPropertyValue(oProp.Name, oSValue)
                     elif uno.IsArray(oSValue):
                         pass
                     else:
                         oDValue = dstObj.getPropertyValue(oProp.Name)
+
                         if oDValue == None or uno.IsEmpty(oDValue):
+
                             if (uno.getConstantByName("com.sun.star.beans.PropertyAttribute.READONLY") and oProp.Attributes) == False:
                                 dstObj.setPropertyValue(oProp.Name, oSValue)
                             elif uno.HasUnoInterfaces(oSValue, "com.sun.star.beans.XPropertySet"):
+
                                 if oSValue.SupportsService("com.sun.star.text.Text"):
                                     pass
                                 else:
                                     copyUsingPropertySetInfo(oSValue, oDValue)
+
         except Exception as e:
             continue
+
     return
 
 
 def canCopyTypeWithAssignment(oObj):
+    """ Checks if we can copy type with assignment """
     case_check = uno.VarType(oObj)
+
     if case_check <= 8:
         return True
     elif case_check == 11 or case_check == 35 or case_check == 36 or case_check == 37:
@@ -402,6 +427,7 @@ def canCopyTypeWithAssignment(oObj):
     elif case_check <= 23 and case_check >= 16:
         return True
     else:
+
         if uno.IsUnoStruct(oObj):
             return True
         else:
@@ -427,6 +453,7 @@ def getLanguage():
     properties = (oProp,)
     key = "UILocale"
     oSet = oConfigProvider.createInstanceWithArguments(oAccess, properties)
+
     if oSet and (oSet.hasByName(key)):
         ooLang = oSet.getPropertyValue(key)
 
@@ -435,17 +462,17 @@ def getLanguage():
         properties = (oProp,)
         key = "ooLocale"
         oSet = oConfigProvider.createInstanceWithArguments(oAccess, properties)
+
         if oSet and (oSet.hasByName(key)):
             ooLang = oSet.getPropertyValue(key)
     return ooLang
 
 
 def get_instance(service_name):
-    """
-    Get a service shortcut.
-    """
+    """ Get a service shortcut. """
     sm = uno.getComponentContext()
     ctx = sm.getServiceManager()
+
     try:
         service = ctx.createInstance(service_name)
     except:
