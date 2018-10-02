@@ -26,7 +26,8 @@ In order to get familiar with LO API a version of the plugin in LO Basic languag
 Page Numbering Addon 0.0.1 was part of the [librecust](https://github.com/eellak/gsoc2018-librecust) GSOC project, suggested by [GFOSS Open Technologies Alliance](https://gfoss.eu/home-posts/). 
 Source code will, surely, be available and suggestions, improvements or bug reports will be more than welcome. Any updates will be distributed through the official extension manager.
 
-Future versions will be distributed from the official LO extension site as well as from this repository. 
+Future versions will be distributed from the official LO extension site as well as from this repository (LibreOffice/versions/
+ directory). 
 
 ## Installation
 Each implementation (Python/LO Basic) is packaged as an extension in `.oxt` format. The LO Basic version has no dependencies. For the suggested Python version the following are applied:
