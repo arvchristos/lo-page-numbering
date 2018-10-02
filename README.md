@@ -2,10 +2,10 @@
 
 This plugin, or by LO/OO terminology add-on(an extension that includes any kind of UI implementation/customization), includes the following features:
 
-![alt text](https://extensions.libreoffice.org/extensions/page-numbering-addon/@@images/screenshot/large)
+![Page numbering addon](https://extensions.libreoffice.org/extensions/page-numbering-addon/@@images/screenshot/large)
 
 ## Features
-* Add page numbering without taking page-break system into account
+* Add page numbering simplifying the previous page-break approach:
 
   Although Page Breaks are an intuitive and effective approach for document layout and styling, users migrating from Microsoft Office suites find it more than difficult to understand)
 
@@ -41,18 +41,18 @@ Each implementation (Python/LO Basic) is packaged as an extension in `.oxt` form
   - Python 3.3 or later
 
 ### Warning
-In order to avoid unexpected results you are suggested to avoid installing together the two versions of this add-on.
+In order to avoid unexpected results you are suggested to avoid installing together the two different versions (Basic and Python) of this add-on.
 
 ## Contribute 
-Extensive info about the development of this extension is provided in the repository [wiki](https://gitlab.com/lo_extensions/lo-page-numbering/wikis/home). 
+Extensive info about the development of this extension is provided in the repository [wiki](https://gitlab.com/lo_extensions/lo-page-numbering/wikis/home).
+
+Also, the contributor is suggested to pay a visit to the contributing [guide](https://github.com/arvchristos/lo-page-numbering/blob/master/CONTRIBUTING.md) 
 
 ## Discussion
-
-Discussion about the extension as well as suggestions can be issued either on the repo or at the following IRC channel:
+Discussion about the extension as well as suggestions can be issued either at the repo or at the following IRC channel:
 
 [IRC channel](https://riot.im/app/#/room/!pywEKwnnGVkNrbMljv:matrix.org)
 
-### Suggestions 
 Suggestions and ideas are more than welcome. We suggest including them in issues, however personal emails are not discouraged.
 
 ### Localization 
