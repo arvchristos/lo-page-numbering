@@ -34,6 +34,9 @@ Future versions will be distributed from the official LO extension site as well 
 ## Installation
 Each implementation (Python/LO Basic) is packaged as an extension in `.oxt` format. The LO Basic version has no dependencies. For the suggested Python version the following are applied:
 
+*In order to use the latest features implemented, you should install the Python version. The LO Basic implementation is not
+maintained until a new maintainer is found.*
+
 ### Python Dependencies
 * libreoffice-script-provider-python package or even better [uno-tools](https://pypi.org/project/unotools/)
 * uno-tools required dependencies
