@@ -1,20 +1,22 @@
-import uno
-import unohelper
-import time
-from com.sun.star.awt import XTopWindowListener
+import gettext
 import itertools
 import operator
+import os
 import sys
+import time
+import urllib
+from urllib import request
+from urllib.parse import urlparse
+import uno
+import unohelper
+from com.sun.star.awt import XTopWindowListener
+from com.sun.star.beans import PropertyValue
 from com.sun.star.beans.PropertyAttribute import READONLY
 from com.sun.star.beans.PropertyAttribute import MAYBEVOID
 from com.sun.star.beans.PropertyAttribute import REMOVEABLE
 from com.sun.star.beans.PropertyAttribute import MAYBEDEFAULT
-from com.sun.star.beans import PropertyValue
-import gettext
-import os
-from urllib.parse import urlparse
-import urllib
-from urllib import request
+
+
 _ = gettext.gettext
 
 # Dictionary for possible numbering type options
@@ -30,12 +32,15 @@ NumTypeCollection = {
     "A,B,C,...": 0
 }
 
-def copyPropertySet(smgr,ctx,srcObj,dstObj):
+
+def copyPropertySet(smgr, ctx, srcObj, dstObj):
     mspf = smgr.createInstanceWithContext("com.sun.star.script.provider.MasterScriptProviderFactory", ctx)
     script_provider = mspf.createScriptProvider("")
-    script = script_provider.getScript("vnd.sun.star.script:PageStyleClone.PageStyle.copyPropertySet?language=Basic&location=application")
+    script = script_provider.getScript(
+        "vnd.sun.star.script:PageStyleClone.PageStyle.copyPropertySet?language=Basic&location=application")
     script.invoke((srcObj,dstObj), (), ())
     return dstObj
+
 
 def main(*args):
     ctx = uno.getComponentContext()
@@ -58,7 +63,8 @@ def main(*args):
     ui_locale.install()
     _ = ui_locale.gettext
 
-    ''' get the doc from the scripting context which is made available to all scripts
+    '''
+    Get the doc from the scripting context which is made available to all scripts
     '''
     Doc = XSCRIPTCONTEXT.getDocument()
     UndoManager = Doc.getUndoManager()
@@ -186,7 +192,7 @@ def main(*args):
     CurrentStyleName = ViewCursor.PageStyleName
     OldStyle = PageStyles.getByName(CurrentStyleName)
 
-    copyPropertySet(smgr,ctx,OldStyle,NewStyle)
+    copyPropertySet(smgr, ctx, OldStyle, NewStyle)
     DefNumberingStyleNum = 200
 
     oUDP = Doc.getDocumentProperties().UserDefinedProperties
@@ -277,7 +283,7 @@ def main(*args):
 
 class oListenerTop_Class(XTopWindowListener, unohelper.Base):
     """
-    Top window listener implementation (XTopWindowListener) 
+    Top window listener implementation (XTopWindowListener)
     """
 
     def __init__(self,):
@@ -315,7 +321,7 @@ class oListenerTop_Class(XTopWindowListener, unohelper.Base):
 
 def get_main_directory(module_name):
     """
-    Return a string that corresponds to the installation directory of 
+    Return a string that corresponds to the installation directory of
     the module_name string (e.g. com.addon.pagenumbering )
     """
     ctx = uno.getComponentContext()
@@ -327,7 +333,7 @@ def get_main_directory(module_name):
 
 def ListFonts(oDoc, SearchString):
     """
-    Returns a tuple (Font_list string[] , index of SearchString font (int) ). 
+    Returns a tuple (Font_list string[] , index of SearchString font (int) ).
     """
     SearchIndex = -1
     uniqueFontNames = []
@@ -410,7 +416,7 @@ and Andrew Pitonyak pdf "Useful Useful Macro Information For OpenOffice.org"
 def getLanguage():
     """
     Get current user interface language in string format. Useful for
-    UI locale checkong on l10n operations (e.g. gettext...) 
+    UI locale checkong on l10n operations (e.g. gettext...)
     """
     oProvider = "com.sun.star.configuration.ConfigurationProvider"
     oAccess = "com.sun.star.configuration.ConfigurationAccess"
@@ -436,7 +442,7 @@ def getLanguage():
 
 def get_instance(service_name):
     """
-    Get a service shortcut. 
+    Get a service shortcut.
     """
     sm = uno.getComponentContext()
     ctx = sm.getServiceManager()
