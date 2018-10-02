@@ -8,3 +8,5 @@ We are more than grateful for your willingness to contribute to this extension. 
 * Suggest new functionality to be implemented
 * Test new implementations from test branches
 * Fix any of the open issues
+
+*You should remember to push changes to a seperate branch with descriptive naming in order to maintain an organized repository structure for future reference.*
