@@ -64,8 +64,7 @@ def main(*args):
     _ = ui_locale.gettext
 
     '''
-    Get the doc from the scripting context which is made available to all scripts
-    '''
+    Get the doc from the scripting context which is made available to all scripts '''
     Doc = XSCRIPTCONTEXT.getDocument()
     UndoManager = Doc.getUndoManager()
     psm = uno.getComponentContext().ServiceManager
@@ -321,7 +320,7 @@ class oListenerTop_Class(XTopWindowListener, unohelper.Base):
 
 def get_main_directory(module_name):
     """
-    Return a string that corresponds to the installation directory of
+    Returns a string that corresponds to the installation directory of
     the module_name string (e.g. com.addon.pagenumbering )
     """
     ctx = uno.getComponentContext()
