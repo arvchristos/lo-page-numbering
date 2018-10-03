@@ -1,11 +1,11 @@
 Welcome to the Page Numbering Addon wiki
 
-* [Localization for developers](Localization-for-Developers)
+* [Localization for developers](Localization-for-Developers.md)
 
-* [Localization tutorial](Localization-tutorial)
+* [Localization tutorial](Localization-tutorial.md)
 
-* [Managing text data](Managing-text-data)
+* [Managing text data](Managing-text-data.md)
 
-* [Page Numbering Addon](Page-Numbering-Addon)
+* [Page Numbering Addon](Page-Numbering-Addon.md)
 
-* [PageNumbering](PageNumbering)
+* [PageNumbering](PageNumbering.md)
