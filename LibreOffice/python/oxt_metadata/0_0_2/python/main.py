@@ -64,6 +64,7 @@ def main(*args):
     _ = ui_locale.gettext
 
     ''' Get the doc from the scripting context which is made available to all scripts '''
+
     Doc = XSCRIPTCONTEXT.getDocument()
     UndoManager = Doc.getUndoManager()
     psm = uno.getComponentContext().ServiceManager
