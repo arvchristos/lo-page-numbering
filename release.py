@@ -21,32 +21,51 @@ def zipall(ob, path, rel=""):
     else:
         pass
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Release a new version')
-    parser.add_argument('version', type=str, help='version (e.g., 0.1.0)')
-    parser.add_argument('--source', dest='source', default=os.getcwd(),
-                        type=str, help='source folder')
-    parser.add_argument('--filename', dest='filename', default='PageNumberingAddon',
-                        type=str, help='filename')
-    
-    args = parser.parse_args()
 
-    release = args.version.replace('.', '_')
+def release(prefix, version, source, filename):
+    release = version.replace('.', '_')
     release_dir = os.path.join(
-        args.source,
-        'LibreOffice/versions/{}'.format(release)
+        source,
+        '{}/versions/{}'.format(prefix, release)
     )
 
     os.makedirs(release_dir, exist_ok=True)
 
     files_dir = os.path.join(
-        args.source,
-        'OpenOffice/python/oxt_metadata'
+        source,
+        '{}/python/oxt_metadata'.format(prefix)
     )
-    oxt_file = '{}/{}.oxt'.format(release_dir, args.filename)
+    oxt_file = '{}/{}.oxt'.format(release_dir, filename)
 
     with zipfile.ZipFile(oxt_file, "w") as oxt:
         for f in os.listdir(files_dir):
             zipall(oxt, os.path.join(files_dir, f))
     
     print('Release file available in {}'.format(oxt_file))
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Release a new version')
+    parser.add_argument('version', type=str, help='version (e.g., 0.1.0)')
+    parser.add_argument('-L', '--LibreOffice', dest='is_libre', default=False,
+                        action='store_true', help='for LibreOffice')
+    parser.add_argument('-O', '--OpenOffice', dest='is_open', default=False,
+                        action='store_true', help='for OpenOffice')
+    parser.add_argument('-s', '--source', dest='source', default=os.getcwd(),
+                        type=str, help='source folder')
+    parser.add_argument('-f', '--filename', dest='filename', default='PageNumberingAddon',
+                        type=str, help='filename')
+    args = parser.parse_args()
+
+    if args.is_open and args.is_libre:
+        parser.error('--LibreOffice and --OpenOffice should not be used at the same time')
+    
+    prefix = ''
+    if args.is_open:
+        prefix = 'OpenOffice'
+    if args.is_libre:
+        prefix = 'LibreOffice'
+    if prefix == '':
+        parser.error('You should specify --LibreOffice or --OpenOffice')
+    
+    release(prefix, args.version, args.source, args.filename)
