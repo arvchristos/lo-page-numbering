@@ -1,3 +1,8 @@
+![GitHub release](https://img.shields.io/github/release/arvchristos/lo-page-numbering.svg)
+![GitHub repo size in bytes](https://img.shields.io/github/repo-size/arvchristos/lo-page-numbering.svg?colorB=fedcba)
+![Python version](https://img.shields.io/badge/python-3.5-green.svg)
+![GitHub issues](https://img.shields.io/github/issues/arvchristos/lo-page-numbering.svg)
+
 # Page Numbering Addon
 
 This plugin, or by LO/OO terminology add-on(an extension that includes any kind of UI implementation/customization), includes the following features:
