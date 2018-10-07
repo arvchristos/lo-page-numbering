@@ -7,7 +7,8 @@ Initial version of Page Numbering addon.
 Locales:
 * en
 * el
+* es
 
 [v. 0.0.2] UPCOMING
-* New locales: it,fr
+* New locales: it,fr,es
 * 'Page x of y' functionality added
