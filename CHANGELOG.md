@@ -9,6 +9,9 @@ Locales:
 * el
 * es
 
-[v. 0.0.2] UPCOMING
-* New locales: it,fr,es
+[v. 0.0.2]
+* New locales: it
+
+[v. 0.0.3]
+* New locales: es,no,de
 * 'Page x of y' functionality added
