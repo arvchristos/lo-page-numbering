@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Extension files were created by Extension Compiler - version 2.1.2 -->
+<description xmlns="http://openoffice.org/extensions/description/2006"
+ xmlns:dep="http://openoffice.org/extensions/description/2006"
+ xmlns:xlink="http://www.w3.org/1999/xlink" >
+   <identifier value="com.addon.pagenumbering" />
+   <version value="0.0.2" />
+   <icon>
+      <default xlink:href="images/icon.png" />
+   </icon>
+   <extension-description>
+      <src xlink:href="Descriptions/descr-en.txt" lang="en"/>
+      <src xlink:href="Descriptions/descr-el.txt" lang="el"/>
+      <src xlink:href="Descriptions/descr-it.txt" lang="it"/>
+   </extension-description>
+   <update-information>
+      <src xlink:href="https://gitlab.com/lo_extensions/lo-page-numbering/raw/master/LibreOffice/python/build_files/PageNumberingAddonPython.update.xml" />
+   </update-information>
+   <registration>
+      <simple-license accept-by="admin" suppress-on-update="true" >
+         <license-text xlink:href="Legal/license-en.txt" lang="en" />
+         <license-text xlink:href="Legal/license-el.txt" lang="el" />
+         <license-text xlink:href="Legal/license-it.txt" lang="it" />
+     </simple-license>
+   </registration>
+   <dependencies>
+      <OpenOffice.org-minimal-version value="3.1" dep:name="OpenOffice.org 2.4 mnameinimum, or more recent" />
+   </dependencies>
+   <display-name>
+      <name lang="en">Page Numbering Add-on</name>
+      <name lang="el">Page Numbering Add-on</name>
+      <name lang="it">Page Numbering Add-on</name>
+   </display-name>
+   <publisher>
+      <name lang="en" xlink:href="https://gitlab.com/lo_extensions/lo-page-numbering/">Arvanitis Christos</name>
+      <name lang="el" xlink:href="https://gitlab.com/lo_extensions/lo-page-numbering/">Αρβανίτης Χρήστος</name>
+      <name lang="it" xlink:href="https://gitlab.com/lo_extensions/lo-page-numbering/">Arvanitis Christos</name>
+   </publisher>
+</description>

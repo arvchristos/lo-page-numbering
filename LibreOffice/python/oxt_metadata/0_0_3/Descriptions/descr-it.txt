@@ -1,0 +1,1 @@
+Estensione che semplifica la numerazione delle pagine in LibreOffice/OpenOffice. 
