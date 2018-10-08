@@ -10,7 +10,11 @@ The following pages describe essential parts of the extension, categorized by le
 #### l10n
 * [Localization description](https://github.com/arvchristos/lo-page-numbering/wiki/Localization-approach-description)
 
+<<<<<<< HEAD
 #### LO API
+=======
+#### LO API 
+>>>>>>> 06ea1cde19b2e934b5c6b7fbe1c0f824115608e9
 * [Managing text data](https://github.com/arvchristos/lo-page-numbering/wiki/Managing-text-data)
 * [Releasing a new version](https://github.com/arvchristos/lo-page-numbering/wiki/Releasing-a-new-version)
 
