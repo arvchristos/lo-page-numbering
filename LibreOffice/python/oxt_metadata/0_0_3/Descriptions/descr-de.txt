@@ -1,0 +1,1 @@
+Eine Erweiterung, die den Prozess der Seitennummerierung in LibreOffice/OpenOffice vereinfacht. 
