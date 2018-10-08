@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpdocument version="1.0">
+   <meta>
+      <topic id="com.addon.pagenumbering.Page01">
+         <title id="tit" xml-lang="en">Seitennummerierungs-Add-on: Einführung</title>
+         <filename>/com.addon.pagenumbering/Page01.xhp</filename>
+      </topic>
+   </meta>
+   <body>
+      <paragraph role="heading" level="1" xml-lang="en" id="N0001">Seitennummerierungs-Add-on</paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0002">
+         Page numbering in LibreOffice/OpenOffice is an unreasonably complicated procedure, especially for a new user. One has to fully understand where the page numbering info is stored for each document, how to use manual page breaks and in what way do page styles extend and work. Considering the fact that other office suites do follow a far more simple approach we decided to create <emph>Page Numbering Addon</emph>. Throughout this help section, we are going to explain how this addon adds an abstraction layer to the whole page numbering process.
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0003">
+         
+      </paragraph>
+      <paragraph role="heading" level="2" xml-lang="en" id="N0004">Einführung</paragraph>
+      <section id="Menu item">
+         <paragraph role="paragraph" xml-lang="en" id="N0005">Das Add-on ist erreichbar durch <emph>Einfügen-&gt;Seitennummerierung</emph></paragraph>
+      </section>
+      <paragraph role="paragraph" xml-lang="en" id="N0006">Nach dem Zugriff auf den Menüpunkt wird dem Benutzer folgender Dialog angezeigt:<br/><image src="com.addon.pagenumbering/../../../images/help/en/main_page_numbering.png" id="N0007"><alt xml-lang="en" id="N0008">Hauptdialog</alt></image></paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0009">
+         
+      </paragraph>
+      <list type="unordered">
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0010"><emph>Dekor</emph>:  Wählen Sie entweder eine einfache Nummerierung oder umgebenden Text (e.g. -1-, [1]).</paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0011"><emph>Nummerierungstyp</emph>: Wählen Sie aus einer Reihe verschiedener Typen wie römische Groß-/Kleinbuchstaben (i,ii... , I,II...), Arabisch (1,2...) oder Griechisch (α,β... , Α,Β...).</paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0012"><emph>Ausrichtung</emph>: Definieren Sie die Ausrichtung der Nummerierung.</paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0013"><emph>Position</emph>: Wählen Sie die Position oder Nummerierung (derzeit verfügbare Optionen sind Kopf- und Fußzeile)</paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0014"><emph>Schriftart</emph>: Wählen Sie von der Liste der verfügbaren Systemschriftarten</paragraph>
+         </listitem>
+      </list>
+      <paragraph role="warning" xml-lang="en" id="N0015">Einige der Systemschriftarten wurden nicht mit bestimmten Zeichen kompatibel gemacht, sodass Kompatibilitätsprobleme und leere Seitenzahlen auftreten können (z. B. unterstützt eine Schriftart möglicherweise keine griechischen Zeichen)</paragraph>
+      <list type="unordered">
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0016"><emph>Größe</emph>: Definieren Sie die Schriftgröße</paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0017"><emph>Erste Seite</emph>: Die Seite, von der aus die Nummerierung beginnt.</paragraph>
+         </listitem>
+      </list>
+      <paragraph role="tip" xml-lang="en" id="N0018">Ein Verwendungsbeispiel für die Option Erste Seite ist die Implementierung eines Dokuments, das ein Deckblatt und Inhalte enthält, die keine Seitennummerierung enthalten.</paragraph>
+      <paragraph role="tip" xml-lang="en" id="N0019">Wenn Sie eine andere Seite als die erste des Dokuments (1) auswählen, werden zwei Bereiche erstellt, der erste, der nicht nummeriert wird, und der zweite, der Zahlen enthält. Dies ist das Ergebnis der Erstellung von Klonenseitenstilen, um die zuvor erstellte Anpassung des Seitenstylings beizubehalten.</paragraph>
+      <list type="unordered">
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0020"><emph>Beginne bei...</emph>: Definieren Sie den Offset (Seitennummer) der ersten nummerierten Seite.</paragraph>
+         </listitem>
+      </list>
+      <paragraph role="tip" xml-lang="en" id="N0021">Das Definieren des Seitenoffsets simuliert die Änderung der entsprechenden Absatzeigenschaft, wodurch ein Benutzer verschiedene Seitennumerierungsschemata über das Dokument hinweg wählen kann (z. B. die ersten n Seiten sind mit römischen Großbuchstaben nummeriert, während der Rest einfache arabische Zahlen verwendet).</paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0022">
+         
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0023">
+         
+      </paragraph>
+   </body>
+</helpdocument>
