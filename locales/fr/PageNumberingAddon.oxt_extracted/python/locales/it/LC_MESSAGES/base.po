@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-08-22 12:25+EEST\n"
+"PO-Revision-Date: 2018-09-07 13:12+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it\n"
+"X-Generator: Poedit 2.1.1\n"
+
+#: main.py:73
+msgid "Page Numbering Title"
+msgstr "Inserimento numerazione pagine"
+
+#: main.py:77
+msgid "Cancel"
+msgstr "Annulla"
+
+#: main.py:80
+msgid "OK"
+msgstr "OK"
+
+#: main.py:83
+msgid "Help"
+msgstr "Guida"
+
+#: main.py:86
+msgid "Position"
+msgstr "Posizione"
+
+#: main.py:88
+msgid "Footer"
+msgstr "Piè di pagina"
+
+#: main.py:88
+msgid "Header"
+msgstr "Riga d'intestazione"
+
+#: main.py:92
+msgid "Alignment"
+msgstr "Allineamento"
+
+#: main.py:94
+msgid "Centered"
+msgstr "Al centro"
+
+#: main.py:94
+msgid "Left"
+msgstr "A sinistra"
+
+#: main.py:94
+msgid "Right"
+msgstr "A destra"
+
+#: main.py:98
+msgid "First Page"
+msgstr "Prima pagina"
+
+#: main.py:102
+msgid "Page Offset"
+msgstr "Inizia con…"
+
+#: main.py:108
+msgid "Numbering Type"
+msgstr "Formato numerazione"
+
+#: main.py:126
+msgid "Decor"
+msgstr "Ornamento"
+
+#: main.py:146
+msgid "Font"
+msgstr "Nome del carattere"
+
+#: main.py:152
+msgid "Size"
+msgstr "Dimensioni"
+
+#: main.py:237
+msgid "Page Numbering"
+msgstr "Numerazione pagine"
