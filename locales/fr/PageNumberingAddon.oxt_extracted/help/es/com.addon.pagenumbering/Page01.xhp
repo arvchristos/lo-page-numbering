@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+   <meta>
+      <topic id="com.addon.pagenumbering.Page01">
+         <title id="tit" xml-lang="en">Complemento de numeración de páginas: Introducción</title>
+         <filename>/com.addon.pagenumbering/Page01.xhp</filename>
+      </topic>
+   </meta>
+   <body>
+      <paragraph role="heading" level="1" xml-lang="en" id="N0001">
+         Complemento de numeración de páginas
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0002">
+         La numeración de páginas en LibreOffice / OpenOffice es un procedimiento irrazonablemente complicado, especialmente para un nuevo usuario. Uno tiene que comprender completamente dónde se almacena la información de numeración de página para cada documento, cómo usar los saltos de página manuales y de qué manera se extienden y funcionan los estilos de página. Teniendo en cuenta el hecho de que otras suites ofimáticas siguen un enfoque mucho más simple, decidimos crear <emph> Complemento de numeración de páginas </emph>. A lo largo de esta sección de ayuda, explicaremos cómo este complemento agrega una capa de abstracción al proceso completo de numeración de páginas.
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0003">
+         
+      </paragraph>
+      <paragraph role="heading" level="2" xml-lang="en" id="N0004">
+         Introducción
+      </paragraph>
+      <section id="Menu item" >
+         <paragraph role="paragraph" xml-lang="en" id="N0005">
+            Se puede acceder al complemento a través de <emph> Insertar -&gt; Numeración de páginas </emph>
+         </paragraph>
+      </section>
+      <paragraph role="paragraph" xml-lang="en" id="N0006">
+         Después de acceder al elemento del menú, al usuario se le presenta el siguiente diálogo de interfaz:<br/><image src="com.addon.pagenumbering/../../../images/help/en/main_page_numbering.png" id="N0007"><alt xml-lang="en" id="N0008">Diálogo principal</alt></image>
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0009">
+         
+      </paragraph>
+      <list type="unordered">
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0010">
+               <emph>Decorar</emph>: Elija tener una numeración simple o texto circundante (por ejemplo, -1-, [1]).
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0011">
+               <emph>Tipos de Numeracion</emph>: Elija entre varios tipos diferentes, como la numeración mayúscula / minúscula romana (i, ii ..., I, II ...), árabe (1,2 ...) o griega (α, β ..., Α , Β ...).
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0012">
+               <emph>Alinear</emph>: Definir la alineación de la numeración.
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0013">
+               <emph>Posicion</emph>: Elija la posición o la numeración (las opciones disponibles actualmente son Encabezado y Pie de página)
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0014">
+               <emph>Fuente </emph>: Elija de la lista de fuentes de sistema disponibles
+            </paragraph>
+         </listitem>
+      </list>
+      <paragraph role="warning" xml-lang="en" id="N0015">
+         Algunas de las fuentes del sistema no fueron diseñadas para ser compatibles con ciertos caracteres, por lo que puede enfrentar problemas de compatibilidad y números de página vacíos (por ejemplo, es posible que una fuente no admita caracteres griegos)
+      </paragraph>
+      <list type="unordered">
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0016">
+               <emph>Tamaño</emph>: Definir el tamaño de letra.
+            </paragraph>
+         </listitem>
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0017">
+               <emph>Primera página</emph>: La página desde donde comenzará la numeración. 
+            </paragraph>
+         </listitem>
+      </list>
+      <paragraph role="tip" xml-lang="en" id="N0018">
+         Un ejemplo de uso de la opción Primera página es la implementación de un documento que incluye una portada y contenidos que no incluyen la numeración de páginas.
+      </paragraph>
+      <paragraph role="tip" xml-lang="en" id="N0019">
+         Al elegir una página diferente, el primero del documento (1) creará dos rangos, el primero que quedará sin numerar y el segundo que incluirá números. Este es el resultado de la creación de estilos de página de clonación para preservar la personalización del estilo de página creado anteriormente.
+      </paragraph>
+      <list type="unordered">
+         <listitem>
+            <paragraph role="listitem" xml-lang="en" id="N0020">
+               <emph>Empezar desde...</emph>: Defina el desplazamiento (número de página) de la primera página numerada.
+            </paragraph>
+         </listitem>
+      </list>
+      <paragraph role="tip" xml-lang="en" id="N0021">
+         La definición del desplazamiento de la página simula la alteración de la propiedad de párrafo correspondiente, lo que permite al usuario elegir diferentes esquemas de numeración de páginas en todo el documento (por ejemplo, las primeras n páginas se numeran con mayúsculas romanas mientras que el resto utiliza números árabes simples).
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0022">
+         
+      </paragraph>
+      <paragraph role="paragraph" xml-lang="en" id="N0023">
+         
+      </paragraph>
+   </body>
+</helpdocument>
